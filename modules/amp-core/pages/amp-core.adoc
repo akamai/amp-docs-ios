@@ -1,0 +1,166 @@
+include::ROOT:partial$amp-gobal-attributes.adoc[]
+:imagesdir: image-catalog
+:amp-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpSimpleSample.zip
+:amp-customui-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpCoreUISample.zip
+:amp-sample-tvos: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpSimpleSampleTV.zip
+
+= AmpCore
+
+AmpCore is the main module for the Akamai Adaptive Media Player, it takes the AVPlayer and augments its functionality to provide proper event notifications, using a well defined and documented protocol stating what events exist and what they are all about. It also ships with a default UI. Akamai AMP can manage several different plugins, please refer to the menu on the left for a full list of the plugins.
+
+If you desire to check out a basic implementation please refer to our application samples:
+
+* {amp-sample-ios}[AMP Simple Sample for iOS].
+* {amp-customui-sample-ios}[AMP Simple Sample for iOS with custom UI].
+* {amp-sample-tvos}[AMP Simple Sample for tvOS].
+
+== Adding AmpCore to the Xcode project
+
+=== Manual Installation
+
+To manually install AmpCore you'll need to download our {amp-distribution}[latest distribution] and look for the `AmpCore.framework`, for tvOS, look for the `AmpCoreTV.framework` instead.
+
+After aquiring the frameworks you can just drag them to you Xcode project directory.
+
+image::manual-installation-1.png[align="center"]
+
+The last step, is to mark every imported framework for `Embed & Sign` in the project's general tab.
+
+image::manual-installation-2.png[align="center"]
+
+=== CocoaPods
+
+If you don't have CocoaPods installed, refer to the {cocoapods-docs}[CocoaPods documentation]. To use CocoaPods, first create a Podfile in the directory containing the Xcode project. For AmpCore, the Podfile should look like this:
+
+[source,bash,subs="attributes"]
+----
+target "ProjectName" do 
+
+  use_frameworks!
+   
+  pod 'AmpCore'
+  
+end
+----
+
+Once you have added the Podfile just run the command `pod install --repo-update` in the directory it's located. Once the command has been completed you should se a new `.xcworkspace` file in your folder. Now you can start integrating the library.
+
+== Implementation
+
+Follow these steps to have a working implementation of the AmpPlayer:
+
+=== Import
+
+The first step is to import the AmpCore.
+
+[source,swift]
+----
+import AmpCore
+----
+
+=== Instantiating the AMP player
+
+To use AmpCore you should first initialize it. Add the AMP Player variable to your View Controller.
+[source,swift]
+----
+let ampPlayer: AmpPlayer!
+----
+
+Use the AMP player variable to instantiate the player. At this point you also need to set its license.
+
+[source,swift]
+----
+ampPlayer = AmpPlayer(parentView: parentView)
+ampPlayer.setLicense(license)
+----
+IMPORTANT: A valid license is always required for AMP to play content. Licenses and trial licenses are provided by the Akamai AMP team.
+
+=== Playing content
+
+To enable playback, use the `play` method; by either passing the playback URL or the AVURLAsset as parameter.
+[source,swift]
+----
+ampPlayer.play(url: YOUR_VIDEO_URL)
+
+// or
+
+ampPlayer.play(asset: AVURLAsset)
+----
+NOTE: The play method works for both Live and On Demand content.
+
+==== Setting Autoplay
+
+Autoplay can be enabled or disabled by setting the `autoplay` attribute to `true` or `false` respectively. The following code enables autoplay
+[source,swift]
+----
+ampPlayer.autoplay = true
+----
+
+For more details on managing playback with AMP please refer to our xref:playback-management.adoc[Playback management documentation]
+
+=== Listening to Events
+
+To listen to AMP player events, make sure to implement the PlayerEventObserver protocol on your View Controller
+[source,swift]
+----
+class ViewController: UIViewController, PlayerEventObserver {
+----
+
+Then, register the current class as the Observer
+[source,swift]
+----
+ampPlayer.registerObserver(self)
+----
+
+Once registered the observer, the PlayerEventObserver callbacks will track the player events. 
+
+Use `onBufferingStateChanged` to make decisions when the buffer changes its state. The possible states are:
+
+* `.ready` when the buffer is ready and playback can start
+* `.delayed` when the buffer is not full (player is still loading content)
+* `.unknown` when loading has not started or there has been an error
+
+The code below, for example, is an alternative for enabling autoplay by instructing AMP to start playback as soon as the buffer is ready.
+[source,swift]
+----
+func onBufferingStateChanged(_ ampPlayer: AmpPlayer) {
+    if ampPlayer.bufferingState == .ready {
+        ampPlayer.play()
+    }
+}
+----
+CAUTION: Please notice the difference between `play(url: YOUR_VIDEO_URL)` and `play()` as the first is usted to set up the video resource to be played by AMP and the second to start video playback.
+
+==== onPlaybackStateChanged image:callback3.jpeg[callback,70,70]
+
+With `onPlaybackStateChanged` the decisions can be made based on the playback status instead. The possible states are:
+
+* `.playing` when the content is being played.
+* `.paused` when content is paused.
+* `.stopped` when playback is stopped.
+* `.ended` when playback has ended by reaching the end of the stream
+* `.failed` when playback failed to start or there has been an error
+
+NOTE: Please bear in mind that live streams do not have an end, therefore they will not transition to the `.ended` state. To handle the scenario where an end user exits live playback, use the `.stopped` playback state or the `WillStop` callback.
+
+The following code will enable an infinite loop, by replaying content once playback has reached the end of the video.
+
+[source,swift]
+----
+func onPlaybackStateChanged(_ ampPlayer: AmpPlayer) {
+    if ampPlayer.playbackState == .ended {
+        ampPlayer.replay()
+    }
+}
+----
+
+For a comprehensive list of Callbacks usable with hte PlayerEventObserver, please refer to our xref:observer-callbacks.adoc[PlayerEventObserver Callbacks] page
+
+=== Enabling DRM
+
+To play DRM enabled content, 
+
+:date: 4/27/2020
+:last-revision: 4/27/2020
+include::ROOT:partial$amp-additional-info.adoc[]
+

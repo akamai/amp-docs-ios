@@ -1,0 +1,1 @@
+xref:amp-core:amp-core.adoc[<- Back to AmpCore documentation]

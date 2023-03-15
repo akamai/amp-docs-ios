@@ -1,1 +1,10 @@
-* xref:amp-plugin-1:index.adoc[]
+* xref:amp-core:amp-core.adoc[]
+* **Advertising**
+* xref:amp-freewheel:amp-freewheel-plugin.adoc[]
+* xref:amp-ima:amp-ima-plugin.adoc[]
+* **Measurement and Analytics**
+* xref:amp-media-analytics:amp-media-analytics-plugin.adoc[]
+* xref:amp-comscore:amp-comscore-plugin.adoc[]
+* xref:amp-nielsen:amp-nielsen-plugin.adoc[]
+* **Playback and Casting**
+* xref:amp-chromecast:amp-chromecast-plugin.adoc[]
