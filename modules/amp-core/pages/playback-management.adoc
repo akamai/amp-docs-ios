@@ -1,0 +1,38 @@
+= Playback Management
+
+== autoplay image:attribute.jpeg[attribute,70,70]
+
+Autoplay can be enabled or disabled by setting the `autoplay` attribute to `true` or `false` respectively. The following code enables autoplay
+[source,swift]
+----
+ampPlayer.autoplay = true
+----
+
+== play() image:method3.jpeg[method,60,60]
+
+Use the `play()` method to start playback. the code below is an alternative way to set autoplay for your stream, by invoking the `play()` method as soon as the `bufferingState` has changed its status to `.ready`
+
+[source,swift]
+----
+func onBufferingStateChanged(_ ampPlayer: AmpPlayer) {
+    if ampPlayer.bufferingState == .ready {
+        self.play()
+    }
+}
+----
+
+== playerSpeed image:attribute.jpeg[attribute,70,70]
+
+The player speed can be changed by setting the `playerSpeed` attribute. This attribute is a float, where a setting of 0.0 pauses the video and 1.0 plays at its natural rate. Values between 0.0 and 1.0 play the video at a slower than natural rate and values higher than 1.0 play at a faster than natural rate.
+
+To use this attribute, set the player speed inside the `onBufferingStateChanged` callback. The following code will set the AMP playback speed to a 1.5x rate.
+
+[source,swift]
+----
+func onBufferingStateChanged(_ ampPlayer: AmpPlayer) {
+    if ampPlayer.bufferingState == .ready {
+        self.ampPlayer.playerSpeed = 1.5
+    }
+}
+----
+

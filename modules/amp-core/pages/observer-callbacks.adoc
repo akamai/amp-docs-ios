@@ -1,0 +1,177 @@
+= PlayerEventObserver Events
+
+Please refer to the following diagram throughout this document.
+
+image::playback-diagram.jpg[align="center"]
+
+== Playback related callbacks
+
+=== onBufferingStateChanged image:callback3.jpeg[callback,70,70]
+
+In the diagram above, at **C**, when the buffer has loaded and the player is ready for playback `onBufferingStateChanged` reports the `bufferingState` as `.ready`. If no more content is inside the buffer when it reaches **H**, which is the farthest position with a populated buffer, the `bufferingState` changes to `.delayed`. In the event of an error the `bufferingState` is set to `.unknown`. In summary:
+
+* `.ready` when the buffer is ready and playback can start
+* `.delayed` when the buffer is not full (player is still loading content)
+* `.unknown` when loading has not started or there has been an error
+
+The following code is an alternative for enabling autoplay by instructing AMP to start playback as soon as the buffer is ready.
+[source,swift]
+----
+func onBufferingStateChanged(_ ampPlayer: AmpPlayer) {
+    if ampPlayer.bufferingState == .ready {
+        ampPlayer.play()
+    }
+}
+----
+
+=== onPlaybackStateChanged image:callback3.jpeg[callback,70,70]
+
+`onPlaybackStateChanged` is called when the playback state changes. There are five states.
+
+* `.playing` when the content is being played.
+* `.paused` when content is paused.
+* `.stopped` when playback is stopped.
+* `.ended` when playback has ended by reaching the end of the stream
+* `.failed` when playback failed to start or there has been an error
+
+In the diagram above the `playbackState` since playback started at **C** is `.playing`. Tapping the pause button will change it to `.paused`. Terminating playback will set it to `stopped` and if normal playback is allowed until the end at **I** the state changes at this point to `ended`. If there had been an error, the status would have been changed to `failed`.
+
+The following code will enable an infinite loop, by replaying content once playback has reached the end of the video.
+
+[source,swift]
+----
+func onPlaybackStateChanged(_ ampPlayer: AmpPlayer) {
+    if ampPlayer.playbackState == .ended {
+        ampPlayer.replay()
+    }
+}
+----
+
+=== onBitrateChanged image:callback3.jpeg[callback,70,70]
+
+`onBitrateChanged` alerts when there is a bitrate change
+
+[source,swift]
+----
+func onBitrateChanged(_ ampPlayer: AmpPlayer, bitrate: Double) {
+    print ("Bitrate changed, new bitrate is \(bitrate)")
+}
+----
+
+=== onPositionChanged image:callback3.jpeg[callback,70,70]
+
+In the diagram above, **B** is the visual representation of the timeline. As the scrubber moves along the timeline it updates its position and is reported by `onPositionChanged`.
+
+[source,swift]
+----
+func onPositionChange(_ ampPlayer: AmpPlayer) {
+    print ("Position changed to \(ampPlayer.currentStreamTime)")
+}
+----
+
+=== onTimeChanged image:callback3.jpeg[callback,70,70]
+
+In the diagram above, **A** indicates the current playback time, changes in playback time are reported by `onTimeChanged`.
+
+[source,swift]
+----
+func onTimeChange(_ ampPlayer: AmpPlayer) {
+    print ("Time changed to \(ampPlayer.currentStreamTime)")
+}
+----
+
+== Ad related callbacks
+
+In the diagram above, the ad break starts at **D** and ends at **G**. Inside the break, an ad starts at **D** and ends at **E**, and another one starts at **F** and ends at **G**. AMP uses callbacks that signal the start and end of ads and ad breaks.
+
+=== onAdStarted image:callback3.jpeg[callback,70,70]
+
+`onAdStarted` is called when ad starts in an ad pod
+
+[source,swift]
+----
+func onAdStarted(ad: AdInfo?) {
+    print("Reporting the start of ad \(ad!.position)")
+}
+----
+
+=== onAdEnded image:callback3.jpeg[callback,70,70]
+
+`onAdEnded` is called when ad ends in an ad pod
+
+[source,swift]
+----
+func onAdEnded(ad: AdInfo?) {
+    print("Reporting the end of ad \(ad!.position)")
+}
+----
+
+=== onAdBreakStarted image:callback3.jpeg[callback,70,70]
+
+`onAdBreakStarted` is called when an ad pod break starts
+
+[source,swift]
+----
+onAdBreakStarted(break: AdBreakInfo?) {
+    print("Reporting onAdBreakStarted")
+}
+----
+
+=== onAdBreakEnded image:callback3.jpeg[callback,70,70]
+
+`onAdBreakEnded` is called when an ad pod break ends
+
+[source,swift]
+----
+func onAdBreakEnded(break: AdBreakInfo?) {
+    print("Reporting onAdBreakEnded")
+}
+----
+
+=== onAdResumed image:callback3.jpeg[callback,70,70]
+
+`onAdResumed` is called when an ad resumes after being paused
+
+[source,swift]
+----
+func onAdResumed(ad: AdInfo?) {
+    print("Reporting the resuming of ad \(ad!.position)")
+}
+----
+
+=== onAdPaused image:callback3.jpeg[callback,70,70]
+
+`onAdPaused` is called when an ad is paused
+
+[source,swift]
+----
+func onAdPaused(ad: AdInfo?) {
+    print("Reporting the pause of ad \(ad!.position)")
+}
+----
+
+=== onAdSkipped image:callback3.jpeg[callback,70,70]
+
+`onAdSkipped` is called when an ad is skipped. This applies for skippable ads.
+
+[source,swift]
+----
+func onAdSkipped() {
+    print("Reporting the skipping of ad \(ad!.position)")
+}
+----
+
+== Error Handling
+
+=== onAmpError image:callback3.jpeg[callback,70,70]
+
+For handling and reported AMP related errors, the information can be retrieved from the `onAmpError` callback
+
+[source,swift]
+----
+func onAmpError(_ ampPlayer: AmpPlayer, error: PlayerError, code: Int, message: String) {
+    print ("AMP has reported an error: Code \(code), \(error.description)")
+}
+----
+
+include::ROOT:partial$back-to-core.adoc[]
