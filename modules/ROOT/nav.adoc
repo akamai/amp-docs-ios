@@ -1,10 +1,16 @@
-* xref:amp-core:amp-core.adoc[]
-* **Advertising**
-* xref:amp-freewheel:amp-freewheel-plugin.adoc[]
-* xref:amp-ima:amp-ima-plugin.adoc[]
-* **Measurement and Analytics**
-* xref:amp-media-analytics:amp-media-analytics-plugin.adoc[]
-* xref:amp-comscore:amp-comscore-plugin.adoc[]
-* xref:amp-nielsen:amp-nielsen-plugin.adoc[]
-* **Playback and Casting**
-* xref:amp-chromecast:amp-chromecast-plugin.adoc[]
+.Get Started
+* xref:ROOT:get-started.adoc[Overview]
+
+.Playback
+* xref:amp-core:amp-core.adoc[Playback Core]
+* xref:amp-chromecast:amp-chromecast-plugin.adoc[Chromecast]
+
+.Ads
+* xref:amp-freewheel:amp-freewheel-plugin.adoc[Freewheel]
+* xref:amp-ima:amp-ima-plugin.adoc[Google IMA]
+
+.Analytics
+* xref:amp-media-analytics:amp-media-analytics-plugin.adoc[Akamai Media Analytics]
+* xref:amp-comscore:amp-comscore-plugin.adoc[ComScore Analytics]
+* xref:amp-nielsen:amp-nielsen-plugin.adoc[Nielsen DCR/DTVR]
+

@@ -1,5 +1,5 @@
 site:
-  title: Adaptative Media Player
+  title: AMP IOS SDK
   start_page: amp-ios::get-started.adoc
 
 runtime:
