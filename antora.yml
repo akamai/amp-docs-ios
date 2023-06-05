@@ -1,6 +1,6 @@
 name: amp-ios
 title: AMP IOS SDK
-version: 1.0.0
+version: 9.2.11
 start_page: ROOT:get-started.adoc
 nav:
 - modules/ROOT/nav.adoc
