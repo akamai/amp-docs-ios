@@ -1,6 +1,7 @@
 include::ROOT:partial$amp-gobal-attributes.adoc[]
 :imagesdir: image-catalog
 :freewheel-docs: https://hub.freewheel.tv/display/techdocs
+:truex-docs: https://docs.google.com/document/d/1-US0UjryEcfVO2Ee0prCttpcorxDKsz3WS9gAh9pbqA
 :amp-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpFreewheelSample.zip
 :amp-sample-tvos: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpFreewheelSampleTV.zip
 
@@ -54,8 +55,43 @@ freewheel.requestAds(serverUrl: "http://demo.v.fwmrm.net", profile: "42015:ios_a
 
 NOTE: You can also add the `config` block while calling this method where you'll have access to the `FWAdController` for an extra layer of configuration before the ads are requested.
 
+=== Integrating TrueX
 
-:date: 45/28/2020
-:last-revision: 5/28/2020
+To integrate Infillion's TrueX ads with Freewheel you can follow their {truex-docs}[official guide]. To integrate using Swift the other changes you must take into consideration are the following: 
+
+1. Import the required headers with the help of the Bridging header file.
++
+[source,objectivec]
+----
+#import <Foundation/NSString.h>
+#import <AdManager/FWSDK.h>
+#import <FWTXRenderer/FWTXRenderer.h>
+#import <FWTXRenderer/FWTXExtension.h>
+#import <FWTXRenderer/FWTXConstants.h>
+#import <FWTXRenderer/FWTXAdView.h>
+----
++
+2. The linking on the AppDelegate while using swift is:
++
+[source,swift]
+----
+FWLinkRenderer(FWTXRenderer.self)
+----
++
+3. Load the extension on the configuration closure of the ad requesting method
++
+[source,swift]
+----
+ampFreewheel.requestAds(serverUrl: "http://demo.v.fwmrm.net",
+                        profile: "42015:ios_allinone_profile",
+                        siteSectionId: "ios_allinone_demo_site_section",
+                        videoAssetId: VideoAssetId(id: "ios_allinone_demo_video",duration: 500)){
+            				adController in
+            				adController.adContext?.loadExtension(String(describing: FWTXExtension.self))
+            			}
+----
+
+:date: 4/28/2020
+:last-revision: 9/28/2023
 include::ROOT:partial$amp-additional-info.adoc[]
 
