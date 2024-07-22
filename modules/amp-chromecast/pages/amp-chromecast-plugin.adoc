@@ -12,8 +12,9 @@ If you desire to check out a basic implementation please refer to our {amp-chrom
 :framework-name: AmpChromecast
 :external-sdk-name: Google Cast SDK
 :external-sdk-podname: google-cast-sdk
-:latest-ios-version: 4.4.7
+:latest-ios-version: 4.8.1
 :external-sdk-ios-url: https://developers.google.com/cast/docs/ios_sender#manual_setup 
+:not-tvos: true
 include::ROOT:partial$amp-instalation.adoc[]
 
 == Implementation
@@ -154,5 +155,5 @@ extension PlayerViewController : AmpChromecastObserver {
 ----
 
 :date: 5/6/2020
-:last-revision: 5/6/2020
+:last-revision: 7/16/2024
 include::ROOT:partial$amp-additional-info.adoc[]
