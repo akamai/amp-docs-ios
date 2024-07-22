@@ -16,8 +16,8 @@ If you desire to check out a basic implementation please refer to our applicatio
 
 :framework-name: AmpFreewheel
 :external-sdk-name: AdManager SDK
-:latest-ios-version: 6.29.0
-:latest-tvos-version: 6.29.0
+:external-sdk-url: https://hub.freewheel.tv/display/techdocs/AdManager+SDK+Integration+Downloads
+:latest-ios-version: 7.3.0
 include::ROOT:partial$amp-instalation.adoc[]
 
 == Implementation
@@ -92,6 +92,6 @@ ampFreewheel.requestAds(serverUrl: "http://demo.v.fwmrm.net",
 ----
 
 :date: 4/28/2020
-:last-revision: 9/28/2023
+:last-revision: 7/22/2024
 include::ROOT:partial$amp-additional-info.adoc[]
 

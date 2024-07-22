@@ -18,9 +18,8 @@ If you desire to check out a basic implementation please refer to our applicatio
 :framework-name: AmpComScore
 :external-sdk-name: ComScore Analytics
 :external-sdk-podname: ComScore
-:latest-ios-version: 6.3.1
-:external-sdk-ios-url: https://github.com/comScore/ComScore-iOS-watchOS-tvOS/tree/master/ComScore/dynamic/iOS/ComScore.framework
-:external-sdk-tvos-url: https://github.com/comScore/ComScore-iOS-watchOS-tvOS/tree/master/ComScore/dynamic/tvOS/ComScore.framework
+:latest-ios-version: 6.12.3
+:external-sdk-url: https://github.com/comScore/ComScore-iOS-watchOS-tvOS
 include::ROOT:partial$amp-instalation.adoc[]
 
 == Implementation
@@ -75,5 +74,5 @@ ampComScore.addMainContentAsset(builder: metadata)
 If you want a full specification of the `SCORStreamingContentMetadata` you can find it on the {comscore-docs}[ComScore manuals].
 
 :date: 5/6/2020
-:last-revision: 5/6/2020
+:last-revision: 7/16/2024
 include::ROOT:partial$amp-additional-info.adoc[]

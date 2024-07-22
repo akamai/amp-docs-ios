@@ -18,9 +18,9 @@ If you desire to check out a basic implementation please refer to our applicatio
 
 === Manual Installation
 
-To manually install AmpCore you'll need to download our {amp-distribution}[latest distribution] and look for the `AmpCore.framework`, for tvOS, look for the `AmpCoreTV.framework` instead.
+To manually install AmpCore you'll need to download our {amp-distribution}[latest distribution] and look for the `AmpCore.xcframework`.
 
-After aquiring the frameworks you can just drag them to you Xcode project directory.
+After aquiring the framework you can just drag it to you Xcode project directory.
 
 image::manual-installation-1.png[align="center"]
 
@@ -158,9 +158,19 @@ For a comprehensive list of Callbacks usable with hte PlayerEventObserver, pleas
 
 === Enabling DRM
 
-To play DRM enabled content, 
+To play DRM content, just provide the credentials for the content in a `FairplayConfiguration` object and load the stream with this configuration.
+
+[source,swift]
+----
+let configuration = FairplayConfiguration(
+    provider: .azure,
+    serverURL: "DRM_SERVER_URL",
+    certificateUrl: "DRM_CERTIFICATE_URL")
+
+ampPlayer.play(url: YOUR_DRM_URL, configuration: configuration)
+----
 
 :date: 4/27/2020
-:last-revision: 4/27/2020
+:last-revision: 7/18/2024
 include::ROOT:partial$amp-additional-info.adoc[]
 

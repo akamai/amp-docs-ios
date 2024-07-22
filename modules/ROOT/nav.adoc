@@ -10,7 +10,6 @@
 * xref:amp-ima:amp-ima-plugin.adoc[Google IMA]
 
 .Analytics
-* xref:amp-media-analytics:amp-media-analytics-plugin.adoc[Akamai Media Analytics]
 * xref:amp-comscore:amp-comscore-plugin.adoc[ComScore Analytics]
 * xref:amp-nielsen:amp-nielsen-plugin.adoc[Nielsen DCR/DTVR]
 

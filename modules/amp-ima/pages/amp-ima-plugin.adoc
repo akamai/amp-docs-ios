@@ -21,10 +21,10 @@ If you desire to check out a basic implementation please refer to our applicatio
 :framework-name: AmpIMA
 :external-sdk-name: Google IMA SDK
 :external-sdk-podname: GoogleAds-IMA-iOS-SDK
-:external-sdk-ios-url: https://developers.google.com/interactive-media-ads/docs/sdks/ios/download
-:external-sdk-tvos-url: https://developers.google.com/interactive-media-ads/docs/sdks/tvos-client-side/download
-:latest-ios-version: 3.11.4
-:latest-tvos-version: 4.2.2
+:external-sdk-url: https://developers.google.com/ad-manager/dynamic-ad-insertion/sdk/ios/download
+:external-sdk-tvos-url: https://developers.google.com/ad-manager/dynamic-ad-insertion/sdk/tvos/download
+:latest-ios-version: 3.23.0
+:latest-tvos-version: 14.3.0
 include::ROOT:partial$amp-instalation.adoc[]
 
 == Implementation
@@ -86,6 +86,6 @@ manager.daiDelegate = self
 ----
 
 :date: 4/27/2020
-:last-revision: 4/27/2020
+:last-revision: 7/22/2024
 include::ROOT:partial$amp-additional-info.adoc[]
 
