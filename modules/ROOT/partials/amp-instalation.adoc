@@ -13,7 +13,7 @@ ifndef::external-sdk-tvos-url[]
 You will also need the {external-sdk-name} which you can download it on the {external-sdk-url}[release page].
 
 endif::external-sdk-tvos-url[]
-ifndef::not-tvos[]
+ifdef::not-tvos[]
 NOTE: This plugin will only work on iOS.
 endif::[]
 
@@ -22,9 +22,9 @@ NOTE: The latest version of the {external-sdk-name} used by this plugin is
 ifdef::latest-ios-version[{latest-ios-version}]
 ifdef::latest-tvos-version[]
 ifdef::latest-ios-version[ on iOS and]
-{latest-tvos-version} on tvOS 
+{latest-tvos-version} on tvOS
 endif::latest-tvos-version[]
-. Newer versions may be used, but you may run into unexpected errors until an update is released.
+, newer versions may be used, but you may run into unexpected errors until an update is released.
 endif::latest-ios-version,latest-tvos-version[]
 
 After aquiring the frameworks you can just drag them to you Xcode project directory.

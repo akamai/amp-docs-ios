@@ -1,0 +1,83 @@
+:current-module: amp-downloader
+include::ROOT:partial$amp-gobal-attributes.adoc[]
+:imagesdir: image-catalog
+:amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpDownloaderSample.zip
+:plugin-common-name:Downloader
+
+= Amp Downloader
+
+The AmpDownloader plugin allows you to download VOD content to watch later on without any network access.
+
+You can check out our basic implementation, please refer to our application samples:
+
+* {amp-plugin-sample-ios}[AMP {plugin-common-name} application sample for iOS].
+
+== Installation
+
+To install the AmpDownloader just manually add the framework or add it through CocoaPods with the same pod name `AmpDownloader`. The steps are the same as with the installation of {amp-player-docs}[our documentation].
+
+== Implementation
+
+You need a working implementation of the AmpPlayer before using this plugin. If you need the implementation guide for AmpPlayer please refer to {amp-player-docs}[our documentation].
+
+=== Import
+
+The first step is to use the Downloader is to import the plugin.
+
+[source,swift]
+----
+import AmpDownloader
+----
+
+=== Adding a new Download
+
+After importing the libraries to the file, you can download a new file with the `startNewDownload` method.
+[source,swift]
+----
+let download = AmpDownloadManager.startNewDownload(title: VIDEO_TITLE, url: url)
+----
+
+=== List the download
+
+To check the list of downloads the user has started, you can check the file `AmpDownloads.plist` in the document directory and decode the file using the `AmpDownload` class.
+[source,swift]
+----
+let path:String = {
+    let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+    return documentDirectory.appending("/AmpDownloads.plist")
+}()
+
+func getDownloads() -> [AmpDownload] {
+    var array:[AmpDownload] = []
+    if let data = FileManager.default.contents(atPath: path),
+        let decodedArray = try? PropertyListDecoder().decode(Array<AmpDownload>.self, from: data) {
+        array = decodedArray
+    } else {
+        array = []
+    }
+    return array
+}
+----
+
+=== Other functionalities
+
+There are also other methods for managing your downloads:
+
+`AmpDownloadManager.pauseDownload`: Pauses a download
+`AmpDownloadManager.resumeDownload`: Resumes a download
+`AmpDownloadManager.cancelDownload`: Deletes the download
+
+=== Recover old downloads
+
+To continue downloading content after reopening the app you must call this method on the launch of it.
+[source,swift]
+----
+func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey : Any]? = nil) -> Bool {
+    AmpDownloadManager.restoreDownloads()
+    return true
+}
+----
+
+:date: 7/26/2024
+:last-revision: 7/26/2024
+include::ROOT:partial$amp-additional-info.adoc[]
