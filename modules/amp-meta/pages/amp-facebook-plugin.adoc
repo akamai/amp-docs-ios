@@ -1,0 +1,59 @@
+:current-module: amp-facebook
+include::ROOT:partial$amp-gobal-attributes.adoc[]
+:imagesdir: image-catalog
+:amp-plugin-docs: https://developers.facebook.com/docs/audience-network/setting-up/platform-setup/ios/get-started/
+:amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpFBAudienceNetworkSample.zip
+:plugin-common-name:Meta Audience Network
+
+= Meta Audience Network
+
+The AmpFBAudienceNetwork plugin offers a quick way to integrate AmpPlayer with {amp-plugin-docs}[Mux SDK]. This plugin enables the display of ads in your playback.
+
+You can check out our basic implementation, please refer to our application samples:
+
+* {amp-plugin-sample-ios}[AMP {plugin-common-name} application sample for iOS].
+* {amp-plugin-sample-tvos}[AMP {plugin-common-name} application sample for tvOS].
+
+:framework-name: AmpFBAudienceNetwork
+:external-sdk-name: Meta Audience Network
+:external-sdk-podname: FBAudienceNetwork
+:latest-ios-version: 6.15.1
+:external-sdk-url: https://developers.facebook.com/docs/audience-network/setting-up/platform-setup/ios/add-sdk
+include::ROOT:partial$amp-instalation.adoc[]
+
+== Implementation
+
+You need a working implementation of the AmpPlayer before using this plugin. If you need the implementation guide for AmpPlayer please refer to {amp-player-docs}[our documentation].
+
+=== Import
+
+The first step is to import the AmpCore and AmpFBAudienceNetwork.
+
+[source,swift]
+----
+import AmpCore
+import AmpFBAudienceNetwork
+----
+
+=== Creating a new instance
+
+After importing the libraries to the file, the next step is to create an instance of `AmpFBAudienceNetworkManager`. You will have to provide the placement ID and the timestamps where the ads will be shown
+[source,swift]
+----
+let fbAds = AmpFBAudienceNetworkManager(player: ampPlayer, placementID:PLACEMENT_ID, adBreaksAtSeconds:[10,20,30])
+----
+
+NOTE: If you don't have a placement ID or need additional information about it please check the https://www.facebook.com/business/help/191133327919314?id=211412110064838[official documentation].
+
+=== Add Preroll and Postroll
+
+If you need to add a preroll or postroll to complete the playback expierience you want, please use the following methods:
+[source,swift]
+----
+fbAds.enablePreroll(enabled: true)
+fbAds.enablePostroll(enabled: true)
+----
+
+:date: 7/26/2024
+:last-revision: 7/26/2024
+include::ROOT:partial$amp-additional-info.adoc[]

@@ -1,0 +1,72 @@
+:current-module: amp-mux
+include::ROOT:partial$amp-gobal-attributes.adoc[]
+:imagesdir: image-catalog
+:amp-plugin-docs: https://docs.mux.com/guides/track-your-video-performance
+:amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpMuxSample.zip
+:amp-plugin-sample-tvos: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpMuxSampleTV.zip
+:plugin-common-name:Mux
+:environment-key-docs:https://docs.mux.com/guides/monitor-akamai-media-player#1-load-muxmux-data-akamai-as-a-plugin
+
+= Mux Analytics
+
+The AmpMux plugin offers a quick way to integrate AmpPlayer with {amp-plugin-docs}[Mux SDK]. This plugin enables the reporting of data collected by Mux in your application, efectively tracking your video activity.
+
+You can check out our basic implementation, please refer to our application samples:
+
+* {amp-plugin-sample-ios}[AMP {plugin-common-name} application sample for iOS].
+* {amp-plugin-sample-tvos}[AMP {plugin-common-name} application sample for tvOS].
+
+:framework-name: AmpMux
+:external-sdk-name: Mux Analytics
+:external-sdk-podname: Mux-Stats-Core
+:latest-ios-version: 5.0.1
+:external-sdk-url: https://github.com/muxinc/stats-sdk-objc
+include::ROOT:partial$amp-instalation.adoc[]
+
+== Implementation
+
+You need a working implementation of the AmpPlayer before using this plugin. If you need the implementation guide for AmpPlayer please refer to {amp-player-docs}[our documentation].
+
+=== Import
+
+The first step is to import the AmpCore, Amp{plugin-common-name}, and {plugin-common-name} plugins.
+
+[source,swift]
+----
+import AmpCore
+import AmpMux
+import MuxCore
+----
+
+=== Defining the Video Data
+
+After importing the libraries to the file, the next step is to define the metadata of your video
+[source,swift]
+----
+let videoMetadata = MUXSDKCustomerVideoData()
+videoMetadata.videoTitle = VIDEO_NAME
+videoMetadata.videoCdn = CDN_NAME
+videoMetadata.videoContentType = CONTENT_TYPE
+videoMetadata.videoStreamType = STREAM_TYEP
+videoMetadata.videoSourceUrl = SRC_URL
+----
+
+=== Creating a new instance
+
+To create a new instance you'll have to provide the metadata of your video and the environment key provided by Mux. If you need additional information regarding the environment key, please refer to {environment-key-docs}[their docs].
+[source,swift]
+----
+let muxInfo = AmpMuxInfo(environmentKey: ENV_KEY, videoMetaData: videoMetadata)
+----
+
+=== Link with the player
+
+To link the video session information to the player to start reporting the playback events you will only have to create a new instance of the `AmpMuxManager`.
+[source,swift]
+----
+let muxManager = AmpMuxManager(player: player_instance, info: muxInfo)
+----
+
+:date: 7/26/2024
+:last-revision: 7/26/2024
+include::ROOT:partial$amp-additional-info.adoc[]
