@@ -4,11 +4,11 @@ include::ROOT:partial$amp-gobal-attributes.adoc[]
 :amp-plugin-docs: https://developer.yospace.com/sdk-documentation/apple/userguide/latest/en/index-en.html
 :amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpYoSpaceSample.zip
 :amp-plugin-sample-tvos: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpYoSpaceSampleTV.zip
-:plugin-common-name:YoSpace
+:plugin-common-name: YoSpace
 
-= YoSpace Analytics
+= YoSpace
 
-The AmpYoSpace plugin offers a quick way to integrate AmpPlayer with {amp-plugin-docs}[YoSpace SDK]. This plugin enables the reporting of data collected by {plugin-common-name} in your application, efectively tracking your video activity.
+The AmpYoSpace plugin offers a quick way to integrate AmpPlayer with {amp-plugin-docs}[YoSpace SDK]. This plugin enables the display of the ads using {plugin-common-name} in your application.
 
 You can check out our basic implementation, please refer to our application samples:
 
@@ -50,13 +50,13 @@ YOSessionProperties.add(.DEBUG_PARSING)
 
 === Adding a manager
 
-The final step is to add AMP's manager to link the video playback with YoSpace reporting.
+The final step is to add AMP's manager to link the video playback with YoSpace ad display.
 [source,swift]
 ----
 manager = AmpYoSpaceManager(url: VIDEO_URL, ampPlayer: AMP_PLAYER_INSTANCE, yoSpaceProperties: properties, playbackMode: .YOVODMode, isLoggingEnabled: true)
 ----
 
-NOTE: After adding the manager just use the player normally and the reports should be sent to YoSpace.
+NOTE: After adding the manager just use the player normally and the ads should be displayed in your application.
 
 :date: 7/26/2024
 :last-revision: 7/26/2024

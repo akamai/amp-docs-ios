@@ -2,7 +2,7 @@
 include::ROOT:partial$amp-gobal-attributes.adoc[]
 :imagesdir: image-catalog
 :amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpDownloaderSample.zip
-:plugin-common-name:Downloader
+:plugin-common-name: Downloader
 
 = Amp Downloader
 
@@ -22,7 +22,7 @@ You need a working implementation of the AmpPlayer before using this plugin. If 
 
 === Import
 
-The first step is to use the Downloader is to import the plugin.
+The first step to use the Downloader is to import the plugin.
 
 [source,swift]
 ----
@@ -52,8 +52,6 @@ func getDownloads() -> [AmpDownload] {
     if let data = FileManager.default.contents(atPath: path),
         let decodedArray = try? PropertyListDecoder().decode(Array<AmpDownload>.self, from: data) {
         array = decodedArray
-    } else {
-        array = []
     }
     return array
 }
@@ -65,7 +63,8 @@ There are also other methods for managing your downloads:
 
 `AmpDownloadManager.pauseDownload`: Pauses a download
 `AmpDownloadManager.resumeDownload`: Resumes a download
-`AmpDownloadManager.cancelDownload`: Deletes the download
+`AmpDownloadManager.cancelDownload`: Cancels an on going download
+`AmpDownloadManager.deleteDownload`: Deletes a downloaded asset
 
 === Recover old downloads
 

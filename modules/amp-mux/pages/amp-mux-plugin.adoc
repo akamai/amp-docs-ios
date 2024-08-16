@@ -4,8 +4,8 @@ include::ROOT:partial$amp-gobal-attributes.adoc[]
 :amp-plugin-docs: https://docs.mux.com/guides/track-your-video-performance
 :amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpMuxSample.zip
 :amp-plugin-sample-tvos: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpMuxSampleTV.zip
-:plugin-common-name:Mux
-:environment-key-docs:https://docs.mux.com/guides/monitor-akamai-media-player#1-load-muxmux-data-akamai-as-a-plugin
+:plugin-common-name: Mux
+:environment-key-docs: https://docs.mux.com/guides/monitor-akamai-media-player#1-load-muxmux-data-akamai-as-a-plugin
 
 = Mux Analytics
 

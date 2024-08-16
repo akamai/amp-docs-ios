@@ -2,11 +2,11 @@
 include::ROOT:partial$amp-gobal-attributes.adoc[]
 :imagesdir: image-catalog
 :amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpVR360Sample.zip
-:plugin-common-name:360
+:plugin-common-name: 360
 
 = Amp 360
 
-The Amp 360 plugin allows you to play corretly content formatted for virtual reality purposes.
+The Amp 360 plugin allows you to play correctly content formatted for virtual reality purposes.
 
 You can check out our basic implementation, please refer to our application samples:
 
@@ -22,7 +22,7 @@ You need a working implementation of the AmpPlayer before using this plugin. If 
 
 === Import
 
-The first step is to use the 360 plugin is to import the plugin.
+The first step to use the 360 plugin is to import the plugin.
 
 [source,swift]
 ----

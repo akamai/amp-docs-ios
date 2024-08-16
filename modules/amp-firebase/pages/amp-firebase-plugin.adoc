@@ -7,7 +7,7 @@ include::ROOT:partial$amp-gobal-attributes.adoc[]
 
 = Firebase Analytics
 
-The AmpFirebase plugin offers a quick and escalable way to integrate AmpPlayer with {amp-plugin-docs}[Google Firebase]. This plugin enables the reporting of data collected by AMP in your application to your own instance of Firebase, efectively tracking your video activity. It will provide you the liberty of tracking the events you are interested in, keeping your logs with only the ipmortant information.
+The AmpFirebase plugin offers a quick and escalable way to integrate AmpPlayer with {amp-plugin-docs}[Google Firebase]. This plugin enables the reporting of data collected by AMP in your application to your own instance of Firebase, efectively tracking your video activity. It will provide you the liberty of tracking the events you are interested in, keeping your logs with only the important information.
 
 You can check out our basic implementation, please refer to our application samples:
 
@@ -183,7 +183,7 @@ class firebaseArgs: AmpFirebaseArgs {
 }
 ----
 
-Yo can override as many methods as you want and even add your own logic on how the information changes across time. There are ways to add additional arguments for every event, for a single category or even for a specific event.
+You can override as many methods as you want and even add your own logic on how the information changes across time. There are ways to add additional arguments for every event, for a single category or even for a specific event.
 
 :date: 7/26/2024
 :last-revision: 7/26/2024

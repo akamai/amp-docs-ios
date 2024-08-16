@@ -13,7 +13,7 @@ If you desire to check out a basic implementation please refer to our {amp-chrom
 :external-sdk-name: Google Cast SDK
 :external-sdk-podname: google-cast-sdk
 :latest-ios-version: 4.8.1
-:external-sdk-url: https://developers.google.com/cast/docs/ios_sender#manual_setup 
+:external-sdk-url: https://developers.google.com/cast/docs/ios_sender#manual_setup
 :not-tvos: true
 include::ROOT:partial$amp-instalation.adoc[]
 
@@ -35,7 +35,7 @@ import UIKit
 
 === Creating a new instance
 
-In your `AppDelegate` slass, the receiver ID must be specified.
+In your `AppDelegate` class, the receiver ID must be specified.
 [source,swift]
 ----
 AmpChromecastManager.initializeContext(receiverId: kGCKDefaultMediaReceiverApplicationID, loggerDelegate: self)
@@ -78,7 +78,7 @@ let mediaInformationBuilder = GCKMediaInformationBuilder.init(contentURL: URL(st
         mediaInformationBuilder.contentType = contentTyoe
 ----
 
-For starting the video cast to a Chromecast device, just add your own button and assign it the custom class `GCKUICastButton`, that way video cast will start the video cast flow automatically.
+For starting the video cast to a Chromecast device, just add your own button and assign it the custom class `GCKUICastButton`, that way video cast will start the flow automatically.
 
 You will also be able to listen to several events from the `AmpChromecastManager` by implementing `AmpChromecastObserver` and assigning it to the manager as an observer. The way to achieve this is by using the `ampChromecast.registerObserver(observer)` method.
 

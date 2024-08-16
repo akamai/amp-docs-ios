@@ -13,11 +13,11 @@
 * xref:amp-freewheel:amp-freewheel-plugin.adoc[Freewheel]
 * xref:amp-ima:amp-ima-plugin.adoc[Google IMA]
 * xref:amp-meta:amp-facebook-plugin.adoc[Meta Audience Network]
+* xref:amp-yospace:amp-yospace-plugin.adoc[YoSpace]
 
 .Analytics
 * xref:amp-comscore:amp-comscore-plugin.adoc[ComScore Analytics]
-* xref:amp-nielsen:amp-nielsen-plugin.adoc[Nielsen DCR/DTVR]
-* xref:amp-yospace:amp-yospace-plugin.adoc[YoSpace]
-* xref:amp-mux:amp-mux-plugin.adoc[Mux Analytics]
 * xref:amp-firebase:amp-firebase-plugin.adoc[Firebase]
+* xref:amp-mux:amp-mux-plugin.adoc[Mux Analytics]
+* xref:amp-nielsen:amp-nielsen-plugin.adoc[Nielsen DCR/DTVR]
 

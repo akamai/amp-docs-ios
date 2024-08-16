@@ -3,21 +3,21 @@ include::ROOT:partial$amp-gobal-attributes.adoc[]
 :imagesdir: image-catalog
 :amp-plugin-docs: https://developers.facebook.com/docs/audience-network/setting-up/platform-setup/ios/get-started/
 :amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpFBAudienceNetworkSample.zip
-:plugin-common-name:Meta Audience Network
+:plugin-common-name: Meta Audience Network
 
 = Meta Audience Network
 
-The AmpFBAudienceNetwork plugin offers a quick way to integrate AmpPlayer with {amp-plugin-docs}[Mux SDK]. This plugin enables the display of ads in your playback.
+The AmpFBAudienceNetwork plugin offers a quick way to integrate AmpPlayer with {amp-plugin-docs}[{plugin-common-name} SDK]. This plugin enables the display of ads in your playback.
 
 You can check out our basic implementation, please refer to our application samples:
 
 * {amp-plugin-sample-ios}[AMP {plugin-common-name} application sample for iOS].
-* {amp-plugin-sample-tvos}[AMP {plugin-common-name} application sample for tvOS].
 
 :framework-name: AmpFBAudienceNetwork
 :external-sdk-name: Meta Audience Network
 :external-sdk-podname: FBAudienceNetwork
 :latest-ios-version: 6.15.1
+:not-tvos: true
 :external-sdk-url: https://developers.facebook.com/docs/audience-network/setting-up/platform-setup/ios/add-sdk
 include::ROOT:partial$amp-instalation.adoc[]
 
