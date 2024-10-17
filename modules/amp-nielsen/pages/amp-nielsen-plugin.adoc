@@ -19,7 +19,7 @@ If you desire to check out a basic implementation please refer to our applicatio
 :external-sdk-name: Nielsen SDK
 :external-sdk-podname: NielsenAppSDK
 :external-sdk-url: https://engineeringportal.nielsen.com/wiki/Special:Downloads
-:external-sdk-podsource: source 'https://github.com/NielsenDigitalSDK/nielsenappsdk-ios-specs-dynamic.git' \
+:external-sdk-podsource: source 'https://github.com/NielsenDigitalSDK/nielsenappsdk-ios-specs-dynamic.git' + \
 source 'https://github.com/CocoaPods/Specs.git'
 :latest-ios-version: 9.4.0.0
 include::ROOT:partial$amp-instalation.adoc[]

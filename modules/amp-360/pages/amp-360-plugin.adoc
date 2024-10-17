@@ -1,0 +1,44 @@
+:current-module: amp-360
+include::ROOT:partial$amp-gobal-attributes.adoc[]
+:imagesdir: image-catalog
+:amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpVR360Sample.zip
+:plugin-common-name: 360
+
+= Amp 360
+
+The Amp 360 plugin allows you to play correctly content formatted for virtual reality purposes.
+
+You can check out our basic implementation, please refer to our application samples:
+
+* {amp-plugin-sample-ios}[AMP {plugin-common-name} application sample for iOS].
+
+== Installation
+
+To install the Amp360 just manually add the framework or add it through CocoaPods with the same pod name `Amp360`. The steps are the same as with the installation of {amp-player-docs}[our documentation].
+
+== Implementation
+
+You need a working implementation of the AmpPlayer before using this plugin. If you need the implementation guide for AmpPlayer please refer to {amp-player-docs}[our documentation].
+
+=== Import
+
+The first step to use the 360 plugin is to import the plugin.
+
+[source,swift]
+----
+import Amp360
+----
+
+=== Adding the manager
+
+After importing the libraries to the file, create a new manager that will handle the device positioning and update the video display properly.
+[source,swift]
+----
+manager = Amp360Manager(ampPlayer: PLAYER_INTANCE, videoView: PLAYER_UI_VIEW)
+----
+
+After adding your manager just use the player normally and the loaded content should adapt to the 360 specs.
+
+:date: 7/26/2024
+:last-revision: 7/26/2024
+include::ROOT:partial$amp-additional-info.adoc[]

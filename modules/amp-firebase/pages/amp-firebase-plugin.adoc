@@ -1,0 +1,190 @@
+:current-module: amp-mux
+include::ROOT:partial$amp-gobal-attributes.adoc[]
+:imagesdir: image-catalog
+:amp-plugin-docs: https://firebase.google.com/docs
+:amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpFirebaseSample.zip
+:plugin-common-name:Firebase
+
+= Firebase Analytics
+
+The AmpFirebase plugin offers a quick and escalable way to integrate AmpPlayer with {amp-plugin-docs}[Google Firebase]. This plugin enables the reporting of data collected by AMP in your application to your own instance of Firebase, efectively tracking your video activity. It will provide you the liberty of tracking the events you are interested in, keeping your logs with only the important information.
+
+You can check out our basic implementation, please refer to our application samples:
+
+* {amp-plugin-sample-ios}[AMP {plugin-common-name} application sample for iOS].
+
+:framework-name: AmpFirebase
+:external-sdk-name: Firebase
+:external-sdk-podname: FirebaseAnalytics
+:latest-ios-version: 10.29.0
+:external-sdk-url: https://firebase.google.com/download/ios
+:not-tvos: true
+include::ROOT:partial$amp-instalation.adoc[]
+
+== Implementation
+
+You need a working implementation of the AmpPlayer before using this plugin. If you need the implementation guide for AmpPlayer please refer to {amp-player-docs}[our documentation].
+
+=== Configuration File
+
+First is to create and add to your project a configuration file `GoogleService-Info.plist` for Firebase to work. Please follow https://firebase.google.com/docs/ios/setup#add-config-file[this guide] to do so.
+
+=== Firebase Setup
+
+After adding the configuration file to your project you'll need to call the configure method on Firebase during your app launch to make sure the configuration has been loaded.
+
+[source,swift]
+----
+public func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    // Override point for customization after application launch.
+    FirebaseApp.configure()
+    return true
+}
+----
+
+=== Import
+
+Next you need to import the AmpCore, Amp{plugin-common-name}, and {plugin-common-name} plugins.
+
+[source,swift]
+----
+import AmpCore
+import AmpFirebase
+import FirebaseCore
+import FirebaseAnalytics
+----
+
+=== Picking the important event
+
+After importing the libraries to the file, the next step is to define the events you want to track. You will have to create a list of the events you are insterested in.
+[source,swift]
+----
+var trackingList: [AmpTracking] = [.playback, .ads]
+----
+
+==== Complete list of events
+
+There are plenty of events you can track as well as complete categories of events that contain several events.
+
+[cols="1,1,3"]
+|===
+|Category
+|Event
+|Description
+
+|.playback
+|.playRequest
+|A new stream load request was receive by the player.
+
+|.playback
+|.bufferingStart
+|The video was stalled due to network problems.
+
+|.playback
+|.bufferingEnd
+|The video started playing after a period of stagnation due to network problems.
+
+|.playback
+|.playbackStart
+|The video started playing after loading a stream.
+
+|.playback
+|.pause
+|The video was paused by the user.
+
+|.playback
+|.resume
+|The video started playing after a pause period.
+
+|.playback
+|.stop
+|The video was stopped and destroyed (in most cases the user closed the player)
+
+|.playback
+|.end
+|The player got to the end of the video.
+
+|.playback
+|.seekStart
+|The user started seeking to another point in time.
+
+|.playback
+|.seekStart
+|The seek requested by the user was successful.
+
+|.playback
+|.bitrateSwitch
+|The bitrate of the player was changed, most of the tiem because of network conditions.
+
+|.playback
+|.onForeground
+|The player is now part of the foreground.
+
+|.playback
+|.onBackground
+|The player is now in the the user navigated away from the app.
+
+|.playback
+|.error
+|There was an error with the playback.
+
+|.ads
+|.adBreakStart
+|An ad break has just started. Several ads may be shown in the same ad break.
+
+|.ads
+|.adBreakEnd
+|The ad break was completed.
+
+|.ads
+|.adStart
+|An ad was started.
+
+|.ads
+|.adEnd
+|The ad was completed.
+
+|.ads
+|.adLoaded
+|A loading of the ads ocurred in background. This usually happens as a preparation for an ad break.
+
+|.ads
+|.adError
+|There was an error with the ad.
+
+|.captions
+|.captionsEnabled
+|The close captions were turned on.
+
+|.captions
+|.captionsDisabled
+|The close captions were turned off.
+
+|=== 
+
+
+=== Creating a new instance
+
+Create an instance of the manager to link your preferences on the events to be tracked with the player.
+[source,swift]
+----
+AmpFirebaseManager(player:ampPlayer, trackingList:trackingList)
+----
+
+=== Add custom log information
+
+You can also expand on the usual behaviour of the arguments logged in Firebase. 
+[source,swift]
+----
+class firebaseArgs: AmpFirebaseArgs {
+    override func getGlobalArgs() -> [String : Any] {
+        return [ CUSTOM_KEY : VOD_STREAM_NAME ]
+    }
+}
+----
+
+You can override as many methods as you want and even add your own logic on how the information changes across time. There are ways to add additional arguments for every event, for a single category or even for a specific event.
+
+:date: 7/26/2024
+:last-revision: 7/26/2024
+include::ROOT:partial$amp-additional-info.adoc[]

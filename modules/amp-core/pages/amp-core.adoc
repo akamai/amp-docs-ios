@@ -71,7 +71,7 @@ Use the AMP player variable to instantiate the player. At this point you also ne
 [source,swift]
 ----
 ampPlayer = AmpPlayer(parentView: parentView)
-ampPlayer.setLicense(license)
+ampPlayer.setApiKey(YOUR_API_KEY)
 ----
 IMPORTANT: A valid license is always required for AMP to play content. Licenses and trial licenses are provided by the Akamai AMP team.
 
@@ -164,8 +164,8 @@ To play DRM content, just provide the credentials for the content in a `Fairplay
 ----
 let configuration = FairplayConfiguration(
     provider: .azure,
-    serverURL: "DRM_SERVER_URL",
-    certificateUrl: "DRM_CERTIFICATE_URL")
+    serverURL: DRM_SERVER_URL,
+    certificateUrl: DRM_CERTIFICATE_URL)
 
 ampPlayer.play(url: YOUR_DRM_URL, configuration: configuration)
 ----

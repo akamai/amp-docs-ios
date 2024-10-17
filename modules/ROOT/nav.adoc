@@ -3,13 +3,21 @@
 
 .Playback
 * xref:amp-core:amp-core.adoc[Playback Core]
+
+.Advanced Functionalities
 * xref:amp-chromecast:amp-chromecast-plugin.adoc[Chromecast]
+* xref:amp-downloader:amp-downloader-plugin.adoc[Downloads]
+* xref:amp-360:amp-360-plugin.adoc[Virtual reality 360]
 
 .Ads
 * xref:amp-freewheel:amp-freewheel-plugin.adoc[Freewheel]
 * xref:amp-ima:amp-ima-plugin.adoc[Google IMA]
+* xref:amp-meta:amp-facebook-plugin.adoc[Meta Audience Network]
+* xref:amp-yospace:amp-yospace-plugin.adoc[YoSpace]
 
 .Analytics
 * xref:amp-comscore:amp-comscore-plugin.adoc[ComScore Analytics]
+* xref:amp-firebase:amp-firebase-plugin.adoc[Firebase]
+* xref:amp-mux:amp-mux-plugin.adoc[Mux Analytics]
 * xref:amp-nielsen:amp-nielsen-plugin.adoc[Nielsen DCR/DTVR]
 
