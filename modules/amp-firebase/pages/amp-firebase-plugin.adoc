@@ -3,7 +3,7 @@ include::ROOT:partial$amp-gobal-attributes.adoc[]
 :imagesdir: image-catalog
 :amp-plugin-docs: https://firebase.google.com/docs
 :amp-plugin-sample-ios: https://mdtp-a.akamaihd.net/amp-ios-sdk/samples/AmpFirebaseSample.zip
-:plugin-common-name:Firebase
+:plugin-common-name: Firebase
 
 = Firebase Analytics
 
