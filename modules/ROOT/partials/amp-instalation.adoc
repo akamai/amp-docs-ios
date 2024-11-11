@@ -27,7 +27,7 @@ endif::latest-tvos-version[]
 , newer versions may be used, but you may run into unexpected errors until an update is released.
 endif::latest-ios-version,latest-tvos-version[]
 
-After aquiring the frameworks you can just drag them to you Xcode project directory.
+After acquiring the frameworks you can just drag them to you Xcode project directory.
 
 image::manual-installation-1.png[align="center"]
 
