@@ -4,8 +4,8 @@
 :highlightjsdir: ../highlight
 :source-highlighter: highlightjs
 :highlightjs-theme: github
-:amp-player-docs: https://developer.akamai.com/tools/AdaptiveMediaPlayer/docs/ios/AmpCore/amp-core/
-:amp-player-events-docs: https://developer.akamai.com/tools/AdaptiveMediaPlayer/docs/ios/AmpCore/amp-core/
+:amp-player-docs: https://docs.player.akamai.com/amp-ios-sdk/latest/amp-core/amp-core.html
+:amp-player-events-docs: https://docs.player.akamai.com/amp-ios-sdk/latest/amp-core/amp-core.html#_listening_to_events
 :stylesdir: ../stylesheets
 :stylesheet: github.css
 

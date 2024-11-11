@@ -2,11 +2,11 @@
 
 image::apple.png[align="center"]
 
-Akamai AMP SDK makes it easy to add video playback functionality to your iOS and tvOS projects. With an out-of-the-box solution, you can have playback in your app in no time. We also support many of the playback add ons on the market, such as analytics, advertaisement (both client-side and server-side), VR, and more.
+Akamai AMP SDK makes it easy to add video playback functionality to your iOS and tvOS projects. With an out-of-the-box solution, you can have playback in your app in no time. We also support many of the playback add ons on the market, such as analytics, advertisement (both client-side and server-side), VR, and more.
 
 == Features
 
-* [*] Supports any iOS device running iOS 13.0 or later versions
+* [*] Supports any iOS device running iOS 15.0 or later versions
 * [*] Multi-player instances
 * [*] DVR and seeking
 * [*] Fullscreen mode and auto rotation in such mode

@@ -20,7 +20,7 @@ If you desire to check out a basic implementation please refer to our applicatio
 
 To manually install AmpCore you'll need to download our {amp-distribution}[latest distribution] and look for the `AmpCore.xcframework`.
 
-After aquiring the framework you can just drag it to you Xcode project directory.
+After acquiring the framework you can just drag it to you Xcode project directory.
 
 image::manual-installation-1.png[align="center"]
 
@@ -154,7 +154,7 @@ func onPlaybackStateChanged(_ ampPlayer: AmpPlayer) {
 }
 ----
 
-For a comprehensive list of Callbacks usable with hte PlayerEventObserver, please refer to our xref:observer-callbacks.adoc[PlayerEventObserver Callbacks] page
+For a comprehensive list of Callbacks usable with the PlayerEventObserver, please refer to our xref:observer-callbacks.adoc[PlayerEventObserver Callbacks] page
 
 === Enabling DRM
 
